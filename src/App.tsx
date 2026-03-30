@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import Cursor from "./components/Cursor";
 import Hero from "./components/Hero";
 import Ticker from "./components/Ticker";
 import Pillars from "./components/Pillars";
@@ -26,7 +25,7 @@ import {
 
 export default function App() {
   return (
-    <div className="bg-[#050810] text-[#e8edf5] min-h-screen overflow-x-hidden cursor-none" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+    <div className="bg-[#050810] text-[#e8edf5] min-h-screen overflow-x-hidden" style={{ fontFamily: "'DM Sans', sans-serif" }}>
       {/* Grid overlay */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
@@ -37,7 +36,6 @@ export default function App() {
         }}
       />
 
-      <Cursor />
       <Navbar links={navLinks} />
 
       <main className="relative z-10">

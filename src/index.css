@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  cursor: none;
+  cursor: auto;
 }
 
 /* Font utility classes for Tailwind */
