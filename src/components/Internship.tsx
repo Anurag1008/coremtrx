@@ -7,7 +7,7 @@ interface InternshipProps {
 
 export default function Internship({ steps }: InternshipProps) {
   return (
-    <section id="internship" className="px-[5%] py-24">
+    <section id="internship" className="px-4 sm:px-6 py-24">
       <SectionHeader
         label="Earn Your Stripes"
         title={<>Real Internship.<br />Real Certificate.</>}

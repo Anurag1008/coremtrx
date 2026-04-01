@@ -54,3 +54,43 @@ export interface FAQItem {
   question: string;
   answer: string;
 }
+
+/** Week-by-week row inside a module (checkout syllabus). */
+export interface CheckoutWeekEntry {
+  label: string;
+  focus: string;
+  bullets: string[];
+}
+
+/** One module with accent + optional per-week breakdown. */
+export interface CheckoutDetailedModule {
+  moduleLabel: string;
+  weekRange: string;
+  accent: "emerald" | "sky" | "violet";
+  title: string;
+  emoji: string;
+  headline: string;
+  themes: string[];
+  outcome: string;
+  weeks: CheckoutWeekEntry[];
+}
+
+export interface CheckoutCourse {
+  id: string;
+  badge?: string;
+  title: string;
+  subtitle?: string;
+  notes: string[];
+  syllabusLinks?: { label: string; href: string }[];
+  outline?: { title: string; items: string[] }[];
+  /** When set (e.g. Systems Intern), renders rich syllabus instead of flat outline. */
+  detailedModules?: CheckoutDetailedModule[];
+  internshipSection?: { title: string; items: string[] };
+  pricing?: {
+    planName?: string;
+    validityNote?: string;
+    detailsHref?: string;
+    priceInINR: number;
+    discountInINR?: number;
+  };
+}

@@ -7,7 +7,7 @@ interface PillarsProps {
 
 export default function Pillars({ pillars }: PillarsProps) {
   return (
-    <section id="learn" className="px-[5%] py-24">
+    <section id="learn" className="px-4 sm:px-6 py-24">
       <SectionHeader
         label="What You Master"
         title={<>Four Pillars of<br />Core Engineering</>}

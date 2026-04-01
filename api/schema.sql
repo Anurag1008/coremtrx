@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS leads (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  course_id VARCHAR(100) NOT NULL,
+  course_title VARCHAR(255) NOT NULL,
+  price_id VARCHAR(100) NULL,
+  amount_in_inr INT NULL,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(190) NOT NULL,
+  phone VARCHAR(40) NOT NULL,
+  ip VARCHAR(64) NULL,
+  user_agent VARCHAR(255) NULL,
+  payment_status VARCHAR(30) NOT NULL DEFAULT 'created',
+  razorpay_order_id VARCHAR(100) NULL,
+  razorpay_payment_id VARCHAR(100) NULL,
+  razorpay_signature VARCHAR(255) NULL,
+  paid_at TIMESTAMP NULL DEFAULT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_created_at (created_at),
+  KEY idx_course_id (course_id),
+  KEY idx_email (email),
+  KEY idx_payment_status (payment_status),
+  KEY idx_razorpay_order_id (razorpay_order_id)
+);
+

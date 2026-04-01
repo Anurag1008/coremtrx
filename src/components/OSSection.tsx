@@ -9,7 +9,7 @@ export default function OSSection({ features }: OSSectionProps) {
   return (
     <section
       id="os"
-      className="px-[5%] py-24 border-t border-b border-[#1e2d45]"
+      className="px-4 sm:px-6 py-24 border-t border-b border-[#1e2d45]"
       style={{ background: "linear-gradient(135deg, #050810 0%, #0b1225 50%, #050810 100%)" }}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">

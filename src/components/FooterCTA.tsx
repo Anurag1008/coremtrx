@@ -1,6 +1,6 @@
 export function CTABanner() {
   return (
-    <section className="relative text-center px-[5%] py-24 overflow-hidden border-t border-b border-[#1e2d45]"
+    <section className="relative text-center px-4 sm:px-6 py-24 overflow-hidden border-t border-b border-[#1e2d45]"
       style={{ background: "linear-gradient(135deg, #0a1a2e, #050c1a)" }}>
       {/* Watermark */}
       <span
@@ -40,7 +40,7 @@ export function CTABanner() {
 
 export function Footer() {
   return (
-    <footer className="bg-black border-t border-[#1e2d45] px-[5%] py-8 flex flex-wrap justify-between items-center gap-6">
+    <footer className="bg-black border-t border-[#1e2d45] px-4 sm:px-6 py-8 flex flex-wrap justify-between items-center gap-6">
       <span className="font-[Syne] font-extrabold text-xl text-white">
         Core<span className="text-cyan-400">Mtrx</span>
       </span>

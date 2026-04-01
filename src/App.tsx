@@ -26,7 +26,7 @@ import {
 export default function App() {
   return (
     <div className="bg-[#050810] text-[#e8edf5] min-h-screen overflow-x-hidden" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-      {/* Grid overlay */}
+      {/* Grid overlay — full viewport */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
         style={{
@@ -36,22 +36,25 @@ export default function App() {
         }}
       />
 
-      <Navbar links={navLinks} />
+      {/* Content column: centered, 80% width */}
+      <div className="relative z-10 mx-auto w-[80%] max-w-[1600px] min-w-0">
+        <Navbar links={navLinks} />
 
-      <main className="relative z-10">
-        <Hero stats={heroStats} />
-        <Ticker items={tickerItems} />
-        <Pillars pillars={pillars} />
-        <Curriculum modules={modules} />
-        <OSSection features={osFeatures} />
-        <Internship steps={internshipSteps} />
-        <Pricing tiers={pricingTiers} />
-        <Testimonials testimonials={testimonials} />
-        <FAQ items={faqs} />
-        <CTABanner />
-      </main>
+        <main className="relative z-10">
+          <Hero stats={heroStats} />
+          <Ticker items={tickerItems} />
+          <Pillars pillars={pillars} />
+          <Curriculum modules={modules} />
+          <OSSection features={osFeatures} />
+          <Internship steps={internshipSteps} />
+          <Pricing tiers={pricingTiers} />
+          <Testimonials testimonials={testimonials} />
+          <FAQ items={faqs} />
+          <CTABanner />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ interface NavbarProps {
 
 export default function Navbar({ links }: NavbarProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[5%] h-[70px] bg-[#050810]/85 backdrop-blur-xl border-b border-[#1e2d45]">
+    <nav className="fixed top-0 left-1/2 z-50 flex w-[80%] max-w-[1600px] min-w-0 -translate-x-1/2 items-center justify-between px-4 sm:px-6 h-[70px] bg-[#050810]/85 backdrop-blur-xl border-b border-[#1e2d45]">
       <Logo />
       <ul className="hidden md:flex gap-8 list-none">
         {links.map((link) => (

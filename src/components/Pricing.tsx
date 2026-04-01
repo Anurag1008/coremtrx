@@ -1,4 +1,5 @@
 import type { PricingTier } from "../types";
+import { Link } from "react-router-dom";
 import { SectionHeader, Reveal } from "./ui";
 
 interface PricingProps {
@@ -7,7 +8,7 @@ interface PricingProps {
 
 export default function Pricing({ tiers }: PricingProps) {
   return (
-    <section id="pricing" className="bg-[#0b1120] px-[5%] py-24">
+    <section id="pricing" className="bg-[#0b1120] px-4 sm:px-6 py-24">
       <SectionHeader
         label="Pricing"
         title={<>One Cohort.<br />Choose Your Path.</>}
@@ -24,6 +25,15 @@ export default function Pricing({ tiers }: PricingProps) {
 }
 
 function PriceCard({ tier }: { tier: PricingTier }) {
+  const checkoutHref =
+    tier.tier === "Core Access"
+      ? "/checkout/core-access"
+      :     tier.tier === "Systems Intern Program"
+        ? "/checkout/full-stack-intern"
+        : tier.ctaHref;
+
+  const isCheckoutLink = checkoutHref.startsWith("/checkout/");
+
   return (
     <div
       className={`relative flex flex-col bg-[#0d1829] border p-10 transition-transform duration-200 hover:-translate-y-1.5 ${
@@ -59,17 +69,31 @@ function PriceCard({ tier }: { tier: PricingTier }) {
         ))}
       </ul>
 
-      <a
-        href={tier.ctaHref}
-        className={`font-mono text-[0.78rem] tracking-wider font-bold py-4 text-center no-underline transition-all duration-200 block ${
-          tier.featured
-            ? "bg-cyan-400 text-black hover:bg-white"
-            : "border border-[#1e2d45] text-white hover:border-cyan-400 hover:text-cyan-400"
-        }`}
-        style={tier.featured ? { clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)" } : {}}
-      >
-        {tier.cta}
-      </a>
+      {isCheckoutLink ? (
+        <Link
+          to={checkoutHref}
+          className={`font-mono text-[0.78rem] tracking-wider font-bold py-4 text-center no-underline transition-all duration-200 block ${
+            tier.featured
+              ? "bg-cyan-400 text-black hover:bg-white"
+              : "border border-[#1e2d45] text-white hover:border-cyan-400 hover:text-cyan-400"
+          }`}
+          style={tier.featured ? { clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)" } : {}}
+        >
+          {tier.cta}
+        </Link>
+      ) : (
+        <a
+          href={checkoutHref}
+          className={`font-mono text-[0.78rem] tracking-wider font-bold py-4 text-center no-underline transition-all duration-200 block ${
+            tier.featured
+              ? "bg-cyan-400 text-black hover:bg-white"
+              : "border border-[#1e2d45] text-white hover:border-cyan-400 hover:text-cyan-400"
+          }`}
+          style={tier.featured ? { clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)" } : {}}
+        >
+          {tier.cta}
+        </a>
+      )}
     </div>
   );
 }

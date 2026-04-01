@@ -6,7 +6,7 @@ interface HeroProps {
 
 export default function Hero({ stats }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-[5%] pt-[120px] pb-20 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-[120px] pb-20 overflow-hidden">
       {/* Glow orbs */}
       <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none -top-24 -right-24"
         style={{ background: "radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%)" }} />

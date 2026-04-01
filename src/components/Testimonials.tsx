@@ -7,7 +7,7 @@ interface TestimonialsProps {
 
 export default function Testimonials({ testimonials }: TestimonialsProps) {
   return (
-    <section className="px-[5%] py-24">
+    <section className="px-4 sm:px-6 py-24">
       <SectionHeader label="Early Students" title="What Our Beta Cohort Said" />
       <Reveal className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
         {testimonials.map((t, i) => (

@@ -7,14 +7,14 @@ interface CurriculumProps {
 
 export default function Curriculum({ modules }: CurriculumProps) {
   return (
-    <section id="curriculum" className="bg-[#0b1120] px-[5%] py-24">
+    <section id="curriculum" className="bg-[#0b1120] px-4 sm:px-6 py-24">
       <div className="flex flex-wrap justify-between items-end gap-8 mb-12">
         <SectionHeader
           label="Full Syllabus"
           title={<>Every Module,<br />Every Topic</>}
         />
         <p className="text-[#6b7a99] text-sm font-light max-w-xs leading-relaxed">
-          Structured in 3 phases over 12 weeks. Each module builds on the last.
+          Three modules, ~10 weeks — foundations → DSA → your own OS. Each phase unlocks the next.
         </p>
       </div>
 
