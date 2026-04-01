@@ -36,8 +36,8 @@ export default function App() {
         }}
       />
 
-      {/* Content column: centered, 80% width */}
-      <div className="relative z-10 mx-auto w-[80%] max-w-[1600px] min-w-0">
+      {/* Content column: full width on mobile, 80% centered from md up */}
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] min-w-0 md:w-[80%]">
         <Navbar links={navLinks} />
 
         <main className="relative z-10">

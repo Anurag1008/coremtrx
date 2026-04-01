@@ -193,7 +193,7 @@ export default function CheckoutPage() {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-[80%] max-w-[1600px] min-w-0">
+      <div className="relative z-10 mx-auto w-full max-w-[1600px] min-w-0 md:w-[80%]">
       <header className="relative z-10 border-b border-[#1e2d45] bg-[#050810]/85 backdrop-blur-xl">
         <div className="px-4 sm:px-6 h-[70px] flex items-center justify-between">
           <Link to="/" className="font-[Syne] font-extrabold text-2xl tracking-tight text-white no-underline">
@@ -210,8 +210,8 @@ export default function CheckoutPage() {
 
       <main className="relative z-10 px-4 sm:px-6 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* Left: course content */}
-          <section className="bg-[#070b14] border border-[#1e2d45] rounded-lg overflow-hidden">
+          {/* Left on desktop; below payment on phone */}
+          <section className="order-2 lg:order-1 bg-[#070b14] border border-[#1e2d45] rounded-lg overflow-hidden">
             <div className="p-7">
               <p className="font-mono text-[0.72rem] tracking-widest text-[#6b7a99] uppercase">
                 {course?.badge ?? "Checkout"}
@@ -286,8 +286,8 @@ export default function CheckoutPage() {
             </div>
           </section>
 
-          {/* Right: payment */}
-          <aside className="bg-[#070b14] border border-[#1e2d45] rounded-lg p-7">
+          {/* Right on desktop; first on phone */}
+          <aside className="order-1 lg:order-2 bg-[#070b14] border border-[#1e2d45] rounded-lg p-7">
             <p className="font-mono text-[0.8rem] tracking-widest text-[#6b7a99] uppercase mb-4">Payment Details</p>
 
             <div className="bg-[#0b1120] border border-white/5 rounded-md p-4">
