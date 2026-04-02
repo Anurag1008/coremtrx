@@ -1,6 +1,7 @@
 import type { PricingTier } from "../types";
 import { Link } from "react-router-dom";
 import { SectionHeader, Reveal } from "./ui";
+import { getSystemsInternPriceInfo } from "../lib/systemsInternPricing";
 
 interface PricingProps {
   tiers: PricingTier[];
@@ -60,8 +61,17 @@ function PriceCard({ tier }: { tier: PricingTier }) {
       )}
 
       <p className="font-mono text-[0.7rem] tracking-widest text-[#6b7a99] uppercase mb-6">{tier.tier}</p>
-      <div className="font-[Syne] font-extrabold text-5xl tracking-tight mb-1">{tier.price}</div>
-      <p className="text-[0.8rem] text-[#6b7a99] font-light mb-6">{tier.note}</p>
+      {tier.tier === "Systems Intern Program" ? (
+        <>
+          <SystemsInternPriceBlock />
+          <p className="text-[0.8rem] text-[#6b7a99] font-light mb-6">{tier.note}</p>
+        </>
+      ) : (
+        <>
+          <div className="font-[Syne] font-extrabold text-5xl tracking-tight mb-1">{tier.price}</div>
+          <p className="text-[0.8rem] text-[#6b7a99] font-light mb-6">{tier.note}</p>
+        </>
+      )}
 
       <ul className="flex-1 mb-8 space-y-0">
         {tier.features.map((f, i) => (
@@ -101,6 +111,40 @@ function PriceCard({ tier }: { tier: PricingTier }) {
           {tier.cta}
         </a>
       )}
+    </div>
+  );
+}
+
+function formatInrShort(n: number) {
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0,
+  }).format(n);
+}
+
+function SystemsInternPriceBlock() {
+  const info = getSystemsInternPriceInfo();
+  const showListVsPay = info.mrpInr > info.toPayInr;
+  return (
+    <div className="mb-1 text-center">
+      <div className="font-[Syne] font-extrabold text-5xl tracking-tight text-white">
+        {showListVsPay ? (
+          <>
+            <span className="block">{formatInrShort(info.toPayInr)}</span>
+            <span className="block text-xl sm:text-2xl text-[#6b7a99] line-through mt-1 font-extrabold">
+              {formatInrShort(info.mrpInr)}
+            </span>
+          </>
+        ) : (
+          <span>{formatInrShort(info.toPayInr)}</span>
+        )}
+      </div>
+      {showListVsPay ? (
+        <p className="font-mono text-[0.65rem] tracking-widest text-[#6b7a99] mt-2 mb-1 text-center">
+          List {formatInrShort(info.mrpInr)} · you pay {formatInrShort(info.toPayInr)}
+        </p>
+      ) : null}
     </div>
   );
 }

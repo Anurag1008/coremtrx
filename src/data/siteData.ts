@@ -146,8 +146,8 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     tier: "Systems Intern Program",
-    price: "₹5,999",
-    note: "one-time · lifetime access",
+    price: "₹4,999",
+    note: "One-time · ₹4,999 · lifetime access",
     features: [
       { label: "Everything in Core Access", included: true },
       { label: "Internship track unlocked", included: true },

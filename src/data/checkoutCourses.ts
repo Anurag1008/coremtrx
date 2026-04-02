@@ -12,7 +12,6 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
       "Community + project support so you don’t stall mid-build.",
       "One payment → lifetime access to all three modules.",
     ],
-    syllabusLinks: [{ label: "Full syllabus (Notion / PDF)", href: "#" }],
     outline: [
       {
         title: "🧩 Course breakdown — what you unlock",
@@ -70,7 +69,6 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
       "After your mini OS ships → unlock 3–5 mentor-reviewed tasks (kernel-adjacent, perf, tooling, docs).",
       "Portfolio story that screams systems programming — not CRUD tutorials.",
     ],
-    syllabusLinks: [{ label: "Download syllabus (PDF)", href: "#" }],
     detailedModules: [
       {
         moduleLabel: "MODULE 01",
@@ -235,8 +233,8 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
     },
     pricing: {
       planName: "Systems Intern · lifetime",
-      validityNote: "Lifetime access + internship track",
-      priceInINR: 5999,
+      validityNote: "One-time · ₹4,999 · lifetime access",
+      priceInINR: 4999,
       discountInINR: 0,
     },
   },

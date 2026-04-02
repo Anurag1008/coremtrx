@@ -77,7 +77,6 @@ export interface CheckoutCourse {
   title: string;
   subtitle?: string;
   notes: string[];
-  syllabusLinks?: { label: string; href: string }[];
   outline?: { title: string; items: string[] }[];
   /** When set (e.g. Systems Intern), renders rich syllabus instead of flat outline. */
   detailedModules?: CheckoutDetailedModule[];

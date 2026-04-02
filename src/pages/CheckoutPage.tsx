@@ -3,6 +3,7 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import type { CheckoutCourse } from "../types";
 import { checkoutCourses } from "../data/checkoutCourses";
 import { SystemsInternSyllabus } from "../components/SystemsInternSyllabus";
+import { getSystemsInternPriceInfo } from "../lib/systemsInternPricing";
 
 type LeadState =
   | { status: "idle" }
@@ -39,10 +40,30 @@ export default function CheckoutPage() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [state, setState] = useState<LeadState>({ status: "idle" });
+  const checkoutPricing = useMemo(() => {
+    if (!course?.pricing) {
+      return {
+        mrpInr: 0,
+        discountInr: 0,
+        toPayInr: 0,
+        promoActive: false,
+      };
+    }
+    if (course.id === "systems-intern") {
+      return getSystemsInternPriceInfo();
+    }
+    const p = course.pricing;
+    const discountInr = p.discountInINR ?? 0;
+    return {
+      mrpInr: p.priceInINR,
+      discountInr: discountInr,
+      toPayInr: Math.max(0, p.priceInINR - discountInr),
+      promoActive: false,
+    };
+  }, [course]);
 
-  const effectivePrice = course?.pricing?.priceInINR ?? 0;
-  const effectiveDiscount = course?.pricing?.discountInINR ?? 0;
-  const toPay = Math.max(0, effectivePrice - effectiveDiscount);
+  const { mrpInr, discountInr, toPayInr } = checkoutPricing;
+  const toPay = toPayInr;
 
   useEffect(() => {
     const existing = document.querySelector<HTMLScriptElement>('script[data-razorpay="checkout"]');
@@ -236,27 +257,6 @@ export default function CheckoutPage() {
                     ))}
                   </div>
 
-                  {course.syllabusLinks?.length ? (
-                    <div className="mt-7">
-                      <p className="font-mono text-[0.75rem] tracking-widest text-[#6b7a99] uppercase mb-3">
-                        Syllabus
-                      </p>
-                      <div className="flex flex-col gap-2">
-                        {course.syllabusLinks.map((l) => (
-                          <a
-                            key={l.href}
-                            href={l.href}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-cyan-400 hover:text-white transition-colors no-underline text-sm"
-                          >
-                            {l.label}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ) : null}
-
                   {course.detailedModules?.length ? (
                     <SystemsInternSyllabus
                       modules={course.detailedModules}
@@ -289,6 +289,19 @@ export default function CheckoutPage() {
           {/* Right on desktop; first on phone */}
           <aside className="order-1 lg:order-2 bg-[#070b14] border border-[#1e2d45] rounded-lg p-7">
             <p className="font-mono text-[0.8rem] tracking-widest text-[#6b7a99] uppercase mb-4">Payment Details</p>
+
+            {course?.id === "systems-intern" ? (
+              <div className="mb-5 -mt-1">
+                <p className="font-[Syne] text-4xl font-extrabold text-white tracking-tight">{formatMoneyINR(toPayInr)}</p>
+                {mrpInr > toPayInr ? (
+                  <p className="text-sm text-[#6b7a99] mt-1">
+                    <span className="line-through">{formatMoneyINR(mrpInr)}</span> MRP
+                  </p>
+                ) : (
+                  <p className="text-sm text-[#6b7a99] mt-1">One-time fee</p>
+                )}
+              </div>
+            ) : null}
 
             <div className="bg-[#0b1120] border border-white/5 rounded-md p-4">
               <div className="text-sm text-[#9fb0cc] mb-3">Your account</div>
@@ -342,13 +355,19 @@ export default function CheckoutPage() {
             <div className="mt-5 bg-[#0b1120] border border-white/5 rounded-md p-4">
               <div className="text-sm font-semibold mb-3">Bill summary</div>
               <div className="flex items-center justify-between text-sm text-[#9fb0cc]">
-                <span>Product total</span>
-                <span>{formatMoneyINR(effectivePrice)}</span>
+                <span>{course?.id === "systems-intern" ? "MRP" : "Product total"}</span>
+                <span
+                  className={
+                    course?.id === "systems-intern" && mrpInr > toPayInr ? "line-through text-[#6b7a99]" : ""
+                  }
+                >
+                  {formatMoneyINR(mrpInr)}
+                </span>
               </div>
               <div className="flex items-center justify-between text-sm text-[#9fb0cc] mt-2">
                 <span>Discount</span>
-                <span className={effectiveDiscount ? "text-emerald-400" : ""}>
-                  {effectiveDiscount ? `- ${formatMoneyINR(effectiveDiscount)}` : formatMoneyINR(0)}
+                <span className={discountInr ? "text-emerald-400" : ""}>
+                  {discountInr ? `- ${formatMoneyINR(discountInr)}` : formatMoneyINR(0)}
                 </span>
               </div>
               <div className="h-px bg-white/10 my-3" />

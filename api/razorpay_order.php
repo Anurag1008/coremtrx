@@ -29,7 +29,7 @@ if ($leadId <= 0 || $courseId === '') {
 // Server-side pricing guard (prevents client tampering)
 $COURSE_PRICING = [
   'core-access' => ['amount_inr' => 2999, 'name' => 'Core Access'],
-  'systems-intern' => ['amount_inr' => 5999, 'name' => 'Systems Intern Program'],
+  'systems-intern' => ['name' => 'Systems Intern Program'],
 ];
 
 if (!isset($COURSE_PRICING[$courseId])) {
@@ -38,7 +38,11 @@ if (!isset($COURSE_PRICING[$courseId])) {
   exit;
 }
 
-$amountINR = (int)$COURSE_PRICING[$courseId]['amount_inr'];
+if ($courseId === 'systems-intern') {
+  $amountINR = 4999;
+} else {
+  $amountINR = (int)$COURSE_PRICING[$courseId]['amount_inr'];
+}
 $amountPaise = $amountINR * 100;
 $receipt = 'lead_' . $leadId . '_' . $courseId;
 
