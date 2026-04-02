@@ -47,19 +47,19 @@ export default function CohortCountdown() {
 
   return (
     <section
-      className="relative px-4 sm:px-6 pt-4 pb-16 sm:pt-6 sm:pb-20 bg-[#050810] overflow-hidden"
+      className="relative px-4 sm:px-6 pt-4 pb-6 sm:pt-6 sm:pb-8 bg-[#050810] overflow-hidden"
       aria-label="Cohort start countdown"
     >
-      <div className="relative z-10 max-w-5xl mx-auto">
-        <div className="rounded-2xl bg-gradient-to-b from-[#0a1220]/80 to-[#070b14]/95 px-6 py-12 sm:px-10 sm:py-16 text-center shadow-[0_24px_80px_-24px_rgba(0,0,0,0.6),0_0_60px_-20px_rgba(0,229,255,0.08)] ring-1 ring-white/[0.06]">
+      <div className="relative z-10 w-full">
+        <div className="w-full rounded-2xl bg-gradient-to-b from-[#0a1220]/80 to-[#070b14]/95 px-6 py-12 sm:px-10 sm:py-16 text-center shadow-[0_24px_80px_-24px_rgba(0,0,0,0.6),0_0_60px_-20px_rgba(0,229,255,0.08)] ring-1 ring-white/[0.06]">
           <p className="font-mono text-[0.72rem] sm:text-[0.75rem] tracking-[0.28em] text-cyan-400/90 uppercase mb-4">
             Cohort launch
           </p>
-          <h2 className="font-[Syne] font-extrabold text-[clamp(1.85rem,5.5vw,3.25rem)] sm:text-4xl md:text-5xl tracking-tight text-white mb-3 leading-tight">
+          <h2 className="font-[Syne] font-extrabold text-[clamp(2.35rem,7vw,4.5rem)] sm:text-5xl md:text-6xl xl:text-[4.25rem] tracking-tight text-white mb-4 leading-[1.05]">
             <span>Cohort is </span>
             <span className="text-cyan-400">Live From</span>
           </h2>
-          <p className="text-base sm:text-lg text-[#9fb0cc] font-light mb-12 sm:mb-14">{label}</p>
+          <p className="text-lg sm:text-xl text-[#9fb0cc] font-light mb-12 sm:mb-14">{label}</p>
 
           {ended ? (
             <p className="font-[Syne] text-xl sm:text-2xl text-cyan-400">Cohort is live — enroll to join.</p>

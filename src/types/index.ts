@@ -7,7 +7,8 @@ export interface Pillar {
   icon: string;
   title: string;
   description: string;
-  accentColor: string;
+  /** Tailwind background class for the top accent bar (e.g. bg-cyan-400) */
+  accentBar: string;
 }
 
 export interface Module {

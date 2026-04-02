@@ -59,8 +59,8 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
       discountInINR: 0,
     },
   },
-  "full-stack-intern": {
-    id: "full-stack-intern",
+  "systems-intern": {
+    id: "systems-intern",
     badge: "Systems · OS · Mentorship",
     title: "Systems Intern Program",
     subtitle:

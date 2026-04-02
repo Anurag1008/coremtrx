@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Figtree:wght@500;600;700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Figtree:wght@500;600;700;800&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -12,6 +12,8 @@
 
 html {
   scroll-behavior: auto;
+  /* Stops the grey/cyan “bubble” flash on tap (Chrome/Android Safari) */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -19,10 +21,11 @@ body {
 }
 
 /* Font utility classes for Tailwind */
-.font-syne {
-  font-family: 'Figtree', sans-serif;
+.font-syne,
+.font-\[Syne\] {
+  font-family: "Figtree", sans-serif;
 }
 
 .font-mono {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: "IBM Plex Mono", monospace;
 }

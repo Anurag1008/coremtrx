@@ -24,15 +24,15 @@ export function CTABanner() {
         Ready to Build<br />
         From the <span className="text-cyan-400">Core?</span>
       </h2>
-      <p className="text-[#6b7a99] font-light mb-10 text-base relative z-10">
-        Join Cohort 1.0. Limited seats. No future regrets.
+      <p className="text-[#9fb0cc] font-light mb-10 text-base relative z-10 max-w-md mx-auto leading-relaxed">
+        Cohort lectures begin April 2026. Enroll once, keep the material for life — and ship a mini OS you can show in interviews.
       </p>
       <a
         href="#pricing"
-        className="relative z-10 inline-block font-mono text-[0.85rem] tracking-wider font-bold px-12 py-5 bg-cyan-400 text-black no-underline transition-all duration-200 hover:bg-white hover:scale-105"
+        className="relative z-10 inline-block font-mono text-[0.85rem] tracking-wider font-bold px-12 py-5 bg-cyan-400 text-black no-underline transition-all duration-200 hover:bg-white hover:scale-[1.02] active:scale-[0.98]"
         style={{ clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)" }}
       >
-        SECURE YOUR SEAT →
+        VIEW PLANS &amp; ENROLL →
       </a>
     </section>
   );
@@ -45,7 +45,7 @@ export function Footer() {
         Core<span className="text-cyan-400">Mtrx</span>
       </span>
       <p className="font-mono text-[0.65rem] tracking-widest text-[#6b7a99]">
-        © 2025 COREMTRX. ALL RIGHTS RESERVED.
+        © 2026 COREMTRX. ALL RIGHTS RESERVED.
       </p>
       <div className="flex gap-6">
         {["TWITTER", "DISCORD", "LINKEDIN", "CONTACT"].map((link) => (

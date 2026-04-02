@@ -8,7 +8,11 @@ interface TestimonialsProps {
 export default function Testimonials({ testimonials }: TestimonialsProps) {
   return (
     <section className="px-4 sm:px-6 py-24">
-      <SectionHeader label="Early Students" title="What Our Beta Cohort Said" />
+      <SectionHeader
+        label="Social proof"
+        title="What learners say"
+        subtitle="Feedback from early builders who went deep on the OS track — not anonymous five-star spam."
+      />
       <Reveal className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
         {testimonials.map((t, i) => (
           <TestiCard key={i} testimonial={t} />

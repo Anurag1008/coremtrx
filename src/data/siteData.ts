@@ -20,31 +20,31 @@ export const tickerItems: string[] = [
 export const pillars: Pillar[] = [
   {
     icon: "⚙️",
-    title: "Operating Systems",
+    title: "Operating systems",
     description:
-      "Processes, threads, scheduling algorithms, memory management, file systems, and OS architecture — from theory to implementation.",
-    accentColor: "before:bg-cyan-400",
+      "Processes, memory, scheduling, and syscalls — build the mental model so “what the OS does” stops feeling like magic.",
+    accentBar: "bg-cyan-400",
   },
   {
     icon: "🌲",
-    title: "Data Structures & Algorithms",
+    title: "DSA that sticks",
     description:
-      "Arrays, linked lists, trees, graphs, heaps, hashing — implemented from scratch with time/space complexity deep dives.",
-    accentColor: "before:bg-violet-500",
+      "Trees, graphs, DP, and patterns — practiced with complexity in mind so interviews test understanding, not recall.",
+    accentBar: "bg-violet-500",
   },
   {
     icon: "🖥️",
-    title: "Mini OS Build",
+    title: "Mini OS capstone",
     description:
-      "Write a bootloader, kernel, basic scheduler, and memory allocator. Ship a working mini OS as your portfolio capstone.",
-    accentColor: "before:bg-rose-500",
+      "Bootloader → kernel → scheduler → shell in QEMU. A real systems project you can demo and document.",
+    accentBar: "bg-rose-500",
   },
   {
-    icon: "🏅",
-    title: "Internship Track",
+    icon: "🛠️",
+    title: "Internship-style track",
     description:
-      "Complete curated real-world tasks, get mentor feedback, and ship work you can show in interviews.",
-    accentColor: "before:bg-yellow-400",
+      "After the core: mentor-reviewed tasks that feel like real tickets — feedback loops, not checkbox busywork.",
+    accentBar: "bg-amber-400",
   },
 ];
 

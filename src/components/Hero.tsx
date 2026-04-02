@@ -23,7 +23,7 @@ export default function Hero() {
       <div className="flex flex-wrap items-center gap-6">
         <a
           href="#pricing"
-          className="font-mono text-[0.8rem] tracking-wider font-bold px-9 py-4 bg-cyan-400 text-black no-underline transition-all duration-200 hover:bg-white hover:scale-105"
+          className="font-mono text-[0.8rem] tracking-wider font-bold px-9 py-4 bg-cyan-400 text-black no-underline transition-all duration-200 hover:bg-white hover:scale-[1.02] active:scale-[0.98]"
           style={{ clipPath: "polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)" }}
         >
           JOIN THE COHORT →
@@ -35,6 +35,27 @@ export default function Hero() {
           EXPLORE SYLLABUS
         </a>
       </div>
+
+      <ul className="mt-8 flex flex-col sm:flex-row sm:flex-wrap gap-3 sm:gap-x-8 sm:gap-y-2 text-[0.78rem] text-[#6b7a99] font-mono tracking-wide list-none">
+        <li className="flex items-center gap-2">
+          <span className="text-cyan-400 shrink-0" aria-hidden>
+            ✓
+          </span>
+          Live cohort starts Apr 2026
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-cyan-400 shrink-0" aria-hidden>
+            ✓
+          </span>
+          One-time fee · lifetime access
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="text-cyan-400 shrink-0" aria-hidden>
+            ✓
+          </span>
+          Secure checkout · UPI & cards
+        </li>
+      </ul>
     </section>
   );
 }

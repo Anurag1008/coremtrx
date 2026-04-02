@@ -2,10 +2,10 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import CohortCountdown from "./components/CohortCountdown";
 import Ticker from "./components/Ticker";
-import Pillars from "./components/Pillars";
 import Curriculum from "./components/Curriculum";
 import OSSection from "./components/OSSection";
 import Internship from "./components/Internship";
+import PlacementReady from "./components/PlacementReady";
 import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
@@ -14,7 +14,6 @@ import { CTABanner, Footer } from "./components/FooterCTA";
 import {
   navLinks,
   tickerItems,
-  pillars,
   modules,
   osFeatures,
   internshipSteps,
@@ -25,7 +24,10 @@ import {
 
 export default function App() {
   return (
-    <div className="bg-[#050810] text-[#e8edf5] min-h-screen overflow-x-hidden" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+    <div
+      className="bg-[#050810] text-[#e8edf5] min-h-screen overflow-x-hidden"
+      style={{ fontFamily: "'DM Sans', sans-serif" }}
+    >
       {/* Grid overlay — full viewport */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
@@ -36,7 +38,7 @@ export default function App() {
         }}
       />
 
-      {/* Content column: full width on mobile, 80% centered from md up */}
+      {/* Same width as rest of site: full on mobile, centered ~80% from md */}
       <div className="relative z-10 mx-auto w-full max-w-[1600px] min-w-0 md:w-[80%]">
         <Navbar links={navLinks} />
 
@@ -44,10 +46,10 @@ export default function App() {
           <Hero />
           <CohortCountdown />
           <Ticker items={tickerItems} />
-          <Pillars pillars={pillars} />
           <Curriculum modules={modules} />
           <OSSection features={osFeatures} />
           <Internship steps={internshipSteps} />
+          <PlacementReady />
           <Pricing tiers={pricingTiers} />
           <Testimonials testimonials={testimonials} />
           <FAQ items={faqs} />

@@ -12,7 +12,7 @@ export default function Pricing({ tiers }: PricingProps) {
       <SectionHeader
         label="Pricing"
         title={<>One Cohort.<br />Choose Your Path.</>}
-        subtitle="No subscriptions. One-time payment. Lifetime access to all content."
+        subtitle="No subscriptions. One-time payment in INR. Lifetime access to videos, code, and updates for this edition."
         centered
       />
       <Reveal className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
@@ -20,6 +20,13 @@ export default function Pricing({ tiers }: PricingProps) {
           <PriceCard key={i} tier={tier} />
         ))}
       </Reveal>
+      <p className="text-center text-sm text-[#6b7a99] mt-12 max-w-xl mx-auto font-light leading-relaxed">
+        Checkout runs on Razorpay — UPI, cards &amp; net banking. Questions on refunds or access? See the FAQ below or{" "}
+        <a href="mailto:hello@coremtrx.in" className="text-cyan-400/90 hover:text-cyan-300 no-underline">
+          email us
+        </a>
+        .
+      </p>
     </section>
   );
 }
@@ -29,16 +36,16 @@ function PriceCard({ tier }: { tier: PricingTier }) {
     tier.tier === "Core Access"
       ? "/checkout/core-access"
       :     tier.tier === "Systems Intern Program"
-        ? "/checkout/full-stack-intern"
+        ? "/checkout/systems-intern"
         : tier.ctaHref;
 
   const isCheckoutLink = checkoutHref.startsWith("/checkout/");
 
   return (
     <div
-      className={`relative flex flex-col bg-[#0d1829] border p-10 transition-transform duration-200 hover:-translate-y-1.5 ${
+      className={`relative flex flex-col rounded-lg bg-[#0d1829] border p-10 transition-transform duration-200 hover:-translate-y-1 ${
         tier.featured
-          ? "border-cyan-400"
+          ? "border-cyan-400 shadow-[0_0_0_1px_rgba(0,229,255,0.15)]"
           : "border-[#1e2d45]"
       }`}
       style={tier.featured ? { background: "linear-gradient(160deg, #0d1829, #0a1f2e)" } : {}}

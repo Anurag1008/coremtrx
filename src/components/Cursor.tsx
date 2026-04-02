@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react";
 import { useCursor } from "../hooks";
 
+/** Only mounts the custom cursor when a mouse / fine pointer is available (not touch). */
 export default function Cursor() {
+  const [useFinePointer, setUseFinePointer] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: fine)");
+    const sync = () => setUseFinePointer(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  if (!useFinePointer) return null;
+
+  return <CursorLayers />;
+}
+
+function CursorLayers() {
   const { dotPos, ringPos } = useCursor();
 
   return (

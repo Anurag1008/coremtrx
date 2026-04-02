@@ -29,7 +29,7 @@ if ($leadId <= 0 || $courseId === '') {
 // Server-side pricing guard (prevents client tampering)
 $COURSE_PRICING = [
   'core-access' => ['amount_inr' => 2999, 'name' => 'Core Access'],
-  'full-stack-intern' => ['amount_inr' => 5999, 'name' => 'Systems Intern Program'],
+  'systems-intern' => ['amount_inr' => 5999, 'name' => 'Systems Intern Program'],
 ];
 
 if (!isset($COURSE_PRICING[$courseId])) {
