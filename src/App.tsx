@@ -1,5 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import CohortCountdown from "./components/CohortCountdown";
 import Ticker from "./components/Ticker";
 import Pillars from "./components/Pillars";
 import Curriculum from "./components/Curriculum";
@@ -12,7 +13,6 @@ import { CTABanner, Footer } from "./components/FooterCTA";
 
 import {
   navLinks,
-  heroStats,
   tickerItems,
   pillars,
   modules,
@@ -41,7 +41,8 @@ export default function App() {
         <Navbar links={navLinks} />
 
         <main className="relative z-10">
-          <Hero stats={heroStats} />
+          <Hero />
+          <CohortCountdown />
           <Ticker items={tickerItems} />
           <Pillars pillars={pillars} />
           <Curriculum modules={modules} />

@@ -1,5 +1,5 @@
 import type {
-  NavLink, Stat, Pillar, Module,
+  NavLink, Pillar, Module,
   OSFeature, InternshipStep, PricingTier,
   Testimonial, FAQItem,
 } from "../types";
@@ -11,16 +11,9 @@ export const navLinks: NavLink[] = [
   { label: "PRICING", href: "#pricing" },
 ];
 
-export const heroStats: Stat[] = [
-  { value: "3", label: "CORE MODULES" },
-  { value: "60+", label: "VIDEO HOURS" },
-  { value: "∞", label: "ACCESS" },
-  { value: "1", label: "REAL OS PROJECT" },
-];
-
 export const tickerItems: string[] = [
   "OPERATING SYSTEMS", "DATA STRUCTURES", "ALGORITHMS",
-  "MINI OS PROJECT", "INTERNSHIP CERTIFICATE", "SYSTEM DESIGN",
+  "MINI OS PROJECT", "INTERNSHIP TRACK", "SYSTEM DESIGN",
   "MEMORY MANAGEMENT", "PROCESS SCHEDULING",
 ];
 
@@ -50,7 +43,7 @@ export const pillars: Pillar[] = [
     icon: "🏅",
     title: "Internship Track",
     description:
-      "Complete curated real-world tasks, get mentor feedback, and earn a verified CoreMtrx Internship Certificate.",
+      "Complete curated real-world tasks, get mentor feedback, and ship work you can show in interviews.",
     accentColor: "before:bg-yellow-400",
   },
 ];
@@ -128,9 +121,9 @@ export const internshipSteps: InternshipStep[] = [
   },
   {
     number: "04",
-    title: "Receive Your Certificate",
+    title: "Ship & Showcase",
     description:
-      "A verified CoreMtrx Internship Certificate issued with a unique credential ID. Share on LinkedIn.",
+      "Polish your best tasks into a portfolio narrative. Get a mentor sign-off and share your work with confidence.",
   },
 ];
 
@@ -145,7 +138,7 @@ export const pricingTiers: PricingTier[] = [
       { label: "Source code access", included: true },
       { label: "Discord community", included: true },
       { label: "Internship track", included: false },
-      { label: "Certificate", included: false },
+      { label: "Mentor portfolio review", included: false },
       { label: "Mentor reviews", included: false },
     ],
     cta: "GET CORE ACCESS",
@@ -160,7 +153,7 @@ export const pricingTiers: PricingTier[] = [
       { label: "Internship track unlocked", included: true },
       { label: "3–5 real task assignments", included: true },
       { label: "Mentor code reviews", included: true },
-      { label: "Verified Certificate (LinkedIn)", included: true },
+      { label: "Portfolio + mentor sign-off", included: true },
       { label: "Priority Discord support", included: true },
       { label: "Career guidance session", included: true },
     ],
@@ -177,7 +170,7 @@ export const pricingTiers: PricingTier[] = [
       { label: "Group onboarding call", included: true },
       { label: "Custom cohort scheduling", included: true },
       { label: "Campus ambassador perks", included: true },
-      { label: "Batch certificates", included: true },
+      { label: "Batch onboarding", included: true },
       { label: "LMS integration", included: true },
       { label: "Dedicated support", included: true },
     ],
@@ -204,7 +197,7 @@ export const testimonials: Testimonial[] = [
   {
     initials: "AM",
     quote:
-      "Got my certificate after completing 4 internship tasks. The reviewer's feedback on my code was brutally honest and incredibly helpful.",
+      "Finished four internship tasks and the reviewer feedback on my code was brutally honest and incredibly helpful.",
     name: "Arjun M.",
     role: "B.TECH CSE · PLACED AT INFOSYS",
   },
@@ -227,9 +220,9 @@ export const faqs: FAQItem[] = [
       "You get 30 days from the date you unlock the Internship Track. Each task typically takes 2–5 hours. You can request a 15-day extension once per task if needed.",
   },
   {
-    question: "Is the certificate recognized by companies?",
+    question: "Do companies care about the internship track?",
     answer:
-      "The certificate comes with a unique verifiable credential ID that employers can verify on our website. We are actively partnering with companies to give it weight.",
+      "Employers care about what you can build and explain. The track is designed so you leave with reviewed work and a clear story for interviews — not a generic badge.",
   },
   {
     question: "Is there a refund policy?",
@@ -239,6 +232,6 @@ export const faqs: FAQItem[] = [
   {
     question: "When does the cohort start?",
     answer:
-      "Cohort 1.0 launches Q3 2025. Buy now to lock in the early-bird price. You'll get access to pre-course material immediately after enrollment.",
+      "Live lectures begin 20 April 2026. Enroll early to lock pricing and get pre-course material as soon as you sign up.",
   },
 ];

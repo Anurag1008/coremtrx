@@ -64,11 +64,11 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
     badge: "Systems · OS · Mentorship",
     title: "Systems Intern Program",
     subtitle:
-      "A systems-oriented track: machine → OS → kernel → internship tasks that look like real OS / infra work. Same 3-module cohort as Core Access, plus mentorship, shipped tasks, and a verified certificate.",
+      "A systems-oriented track: machine → OS → kernel → internship tasks that look like real OS / infra work. Same 3-module cohort as Core Access, plus mentorship and shipped tasks you can show in interviews.",
     notes: [
       "Not a generic “web dev” internship — you’ll lean on C, memory, debugging, and low-level reasoning.",
       "After your mini OS ships → unlock 3–5 mentor-reviewed tasks (kernel-adjacent, perf, tooling, docs).",
-      "Certificate + portfolio story that screams systems programming — not CRUD tutorials.",
+      "Portfolio story that screams systems programming — not CRUD tutorials.",
     ],
     syllabusLinks: [{ label: "Download syllabus (PDF)", href: "#" }],
     detailedModules: [
@@ -229,7 +229,7 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
       items: [
         "Unlock 3–5 tasks that feel like real tickets: kernel debugging, perf fixes, tooling, or technical writing.",
         "Mentor reviews on your diffs — the same feedback loops you’d get on a small infra team.",
-        "Verified CoreMtrx Systems Internship Certificate — credential ID you can share with recruiters.",
+        "Mentor sign-off on portfolio-ready work — clear talking points for recruiters.",
         "Optional: portfolio review — how to talk about your OS project in interviews.",
       ],
     },

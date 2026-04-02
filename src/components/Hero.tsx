@@ -1,12 +1,6 @@
-import type { Stat } from "../types";
-
-interface HeroProps {
-  stats: Stat[];
-}
-
-export default function Hero({ stats }: HeroProps) {
+export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 pt-[120px] pb-20 overflow-hidden">
+    <section className="relative flex flex-col justify-start px-4 sm:px-6 pt-[120px] pb-10 sm:pb-12 overflow-hidden">
       {/* Glow orbs */}
       <div className="absolute w-[700px] h-[700px] rounded-full pointer-events-none -top-24 -right-24"
         style={{ background: "radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 70%)" }} />
@@ -23,7 +17,7 @@ export default function Hero({ stats }: HeroProps) {
 
       <p className="text-lg text-[#6b7a99] max-w-xl leading-relaxed mb-10 font-light">
         Master OS internals, DSA from first principles, and build a real mini Operating System.
-        Plus earn an internship certificate by completing real-world tasks.
+        Then unlock the internship track — real tasks, mentor feedback, portfolio pieces.
       </p>
 
       <div className="flex flex-wrap items-center gap-6">
@@ -41,12 +35,6 @@ export default function Hero({ stats }: HeroProps) {
           EXPLORE SYLLABUS
         </a>
       </div>
-
-      <div className="flex flex-wrap gap-12 mt-16 pt-8 border-t border-[#1e2d45]">
-        {stats.map((s) => (
-          <StatItem key={s.label} value={s.value} label={s.label} />
-        ))}
-      </div>
     </section>
   );
 }
@@ -60,11 +48,3 @@ function SectionTag({ text }: { text: string }) {
   );
 }
 
-function StatItem({ value, label }: Stat) {
-  return (
-    <div>
-      <div className="font-[Syne] font-extrabold text-4xl text-cyan-400">{value}</div>
-      <div className="font-mono text-[0.72rem] tracking-widest text-[#6b7a99] mt-1">{label}</div>
-    </div>
-  );
-}
