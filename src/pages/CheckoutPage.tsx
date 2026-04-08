@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import type { CheckoutCourse } from "../types";
 import { checkoutCourses } from "../data/checkoutCourses";
 import { SystemsInternSyllabus } from "../components/SystemsInternSyllabus";
@@ -8,7 +8,6 @@ import { getSystemsInternPriceInfo } from "../lib/systemsInternPricing";
 type LeadState =
   | { status: "idle" }
   | { status: "submitting" }
-  | { status: "success"; message: string }
   | { status: "error"; message: string };
 
 function useQuery() {
@@ -29,7 +28,35 @@ function apiErr(json: { message?: string; detail?: string; hint?: string }) {
   return [json.message, json.detail, json.hint].filter(Boolean).join(" — ");
 }
 
+const RAZORPAY_SCRIPT = "https://checkout.razorpay.com/v1/checkout.js";
+
+function injectRazorpayScriptIfNeeded(): void {
+  if (document.querySelector('script[data-razorpay="checkout"]')) return;
+  const s = document.createElement("script");
+  s.src = RAZORPAY_SCRIPT;
+  s.async = true;
+  s.dataset.razorpay = "checkout";
+  document.body.appendChild(s);
+}
+
+/** checkout.js loads async; lead API can finish first — wait until `window.Razorpay` exists. */
+async function waitForRazorpaySdk(maxMs = 20000): Promise<void> {
+  const w = window as unknown as { Razorpay?: unknown };
+  if (w.Razorpay) return;
+  injectRazorpayScriptIfNeeded();
+  const deadline = Date.now() + maxMs;
+  while (!w.Razorpay) {
+    if (Date.now() > deadline) {
+      throw new Error(
+        "Payment SDK did not load in time. Check your connection, disable ad-blockers for this site, then refresh and try again."
+      );
+    }
+    await new Promise((r) => setTimeout(r, 50));
+  }
+}
+
 export default function CheckoutPage() {
+  const navigate = useNavigate();
   const { courseId } = useParams();
   const query = useQuery();
   const priceId = query.get("priceId") ?? undefined;
@@ -66,16 +93,12 @@ export default function CheckoutPage() {
   const toPay = toPayInr;
 
   useEffect(() => {
-    const existing = document.querySelector<HTMLScriptElement>('script[data-razorpay="checkout"]');
-    if (existing) return;
-    const script = document.createElement("script");
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.async = true;
-    script.dataset.razorpay = "checkout";
-    document.body.appendChild(script);
+    injectRazorpayScriptIfNeeded();
   }, []);
 
   async function createOrderAndPay(leadIdValue: number) {
+    await waitForRazorpaySdk();
+
     const res = await fetch("/api/razorpay_order.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -106,11 +129,8 @@ export default function CheckoutPage() {
     const w = window as unknown as {
       Razorpay?: new (opts: any) => { open: () => void };
     };
-    if (!w.Razorpay) {
-      throw new Error("Payment SDK not loaded yet. Please try again.");
-    }
 
-    const rz = new w.Razorpay({
+    const rz = new w.Razorpay!({
       key: json.keyId,
       amount: json.amountPaise,
       currency: json.currency || "INR",
@@ -145,7 +165,15 @@ export default function CheckoutPage() {
           setState({ status: "error", message: apiErr(verifyJson) || "Payment verification failed." });
           return;
         }
-        setState({ status: "success", message: "Payment successful. Check your email/WhatsApp for onboarding." });
+        navigate("/enrollment-confirmed", {
+          replace: true,
+          state: {
+            email: email.trim(),
+            name: name.trim(),
+            courseTitle: course?.title ?? "Your course",
+            courseId: course?.id ?? courseId ?? "",
+          },
+        });
       },
       modal: {
         ondismiss: () => {
@@ -385,9 +413,6 @@ export default function CheckoutPage() {
               {state.status === "submitting" ? "STARTING PAYMENT..." : `PAY ${formatMoneyINR(toPay)}`}
             </button>
 
-            {state.status === "success" ? (
-              <div className="mt-4 text-sm text-emerald-400">{state.message}</div>
-            ) : null}
             {state.status === "error" ? (
               <div className="mt-4 text-sm text-rose-400">{state.message}</div>
             ) : null}

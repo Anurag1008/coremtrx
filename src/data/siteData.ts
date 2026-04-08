@@ -68,7 +68,7 @@ export const modules: Module[] = [
     icon: "📊",
     title: "Crack DSA with Confidence",
     topics: [
-      "Interview-ready problem solving (Striver 191–style sheet)",
+      "Interview-ready problem solving (proper roadmap)",
       "Arrays, strings & linked lists — patterns, not memorization",
       "Trees & graphs, explained so you can explain them in interviews",
       "Recursion, backtracking & DP — easy → advanced, step by step",

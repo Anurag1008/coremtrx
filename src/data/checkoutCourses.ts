@@ -17,7 +17,7 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
         title: "🧩 Course breakdown — what you unlock",
         items: [
           "MODULE 01 (Weeks 1–2): Strong foundations — how computers & OS really run your code.",
-          "MODULE 02 (Weeks 3–5): DSA that sticks — Striver 191–style grind, interview-ready.",
+          "MODULE 02 (Weeks 3–5): DSA that sticks — proper roadmap, interview-ready.",
           "MODULE 03 (Weeks 6–10): Build your own OS — bootloader → kernel → memory & processes.",
         ],
       },
@@ -33,7 +33,7 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
       {
         title: "MODULE 02 — Crack DSA with confidence",
         items: [
-          "Problem-solving muscle via a structured sheet (Striver 191–style path).",
+          "Problem-solving muscle via a structured sheet and a clear roadmap.",
           "Arrays, strings, linked lists — patterns you can reuse.",
           "Trees & graphs made approachable — including recursion & backtracking.",
           "Dynamic programming from basics to advanced — with a roadmap, not chaos.",
@@ -113,7 +113,7 @@ export const checkoutCourses: Record<string, CheckoutCourse> = {
         accent: "sky",
         emoji: "📊",
         title: "Crack DSA with confidence",
-        headline: "Interview-grade problem solving with a Striver 191–style roadmap — patterns, not memorization.",
+        headline: "Interview-grade problem solving with a proper roadmap — patterns, not memorization.",
         themes: [
           "Structured problem-solving (arrays → graphs → DP) with complexity discipline.",
           "Trees & graphs made approachable — traversals, shortest paths, DSU.",

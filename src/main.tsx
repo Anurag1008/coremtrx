@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import CheckoutPage from "./pages/CheckoutPage";
+import EnrollmentConfirmedPage from "./pages/EnrollmentConfirmedPage";
 
 function ScrollToTop() {
   const location = useLocation();
@@ -39,6 +40,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/checkout/:courseId" element={<CheckoutPage />} />
+        <Route path="/enrollment-confirmed" element={<EnrollmentConfirmedPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

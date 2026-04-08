@@ -10,7 +10,7 @@ export default function FAQ({ items }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
-    <section className="bg-[#0b1120] px-4 sm:px-6 py-24">
+    <section id="faq" className="bg-[#0b1120] px-4 sm:px-6 py-24">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <SectionHeader label="FAQ" title="Questions Answered" centered />
