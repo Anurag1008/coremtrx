@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS leads (
   paid_at TIMESTAMP NULL DEFAULT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
+  UNIQUE KEY uq_email (email),
   KEY idx_created_at (created_at),
   KEY idx_course_id (course_id),
   KEY idx_email (email),

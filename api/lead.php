@@ -73,6 +73,18 @@ try {
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
   ]);
 
+  // Enforce unique email (pre-check for clearer error)
+  $check = $pdo->prepare('SELECT id FROM leads WHERE email = :email LIMIT 1');
+  $check->execute([
+    ':email' => $email,
+  ]);
+  $existing = $check->fetch();
+  if ($existing) {
+    http_response_code(409);
+    echo json_encode(['ok' => false, 'message' => 'Email is already registered']);
+    exit;
+  }
+
   $stmt = $pdo->prepare(
     'INSERT INTO leads (course_id, course_title, price_id, amount_in_inr, name, email, phone, ip, user_agent)
      VALUES (:course_id, :course_title, :price_id, :amount_in_inr, :name, :email, :phone, :ip, :user_agent)'
@@ -91,6 +103,14 @@ try {
 
   $leadId = (int)$pdo->lastInsertId();
   echo json_encode(['ok' => true, 'message' => 'Details saved. Continue to payment.', 'leadId' => $leadId]);
+} catch (PDOException $e) {
+  // In case DB has a unique constraint (uq_email) and we hit it, return a friendly message.
+  if (($e->getCode() ?? '') === '23000') {
+    http_response_code(409);
+    echo json_encode(['ok' => false, 'message' => 'Email is already registered']);
+    exit;
+  }
+  json_exit_db_error($e, 'lead.php');
 } catch (Throwable $e) {
   json_exit_db_error($e, 'lead.php');
 }
